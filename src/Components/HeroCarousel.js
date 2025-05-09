@@ -1,48 +1,132 @@
-// HeroCarousel.tsx
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import './HeroCarousel.css'; // Import your custom CSS for the carousel
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./HeroCarousel.css";
+import { motion } from "framer-motion";
 
-
-const images = [
-  '/images/pexels-cottonbro-5474299.jpg',
-  '/images/pexels-fauxels-3184418.jpg',
-  '/images/pexels-fauxels-3184405.jpg',
-  '/images/pexels-mikhail-nilov-7988079.jpg',
-
+const slides = [
+  {
+    bgImage: "/images/pexels-cottonbro-5474299.jpg",
+    humanImage: "/images/slider-human-1.jpg",
+    subtitle: "IT Solutions For Easy Integration",
+    title: "Deliver Innovative\nIT Solutions For Technology Insights",
+    description: "Building a relationship between IT companies & experts",
+    buttons: ["Learn More", "Contact Us"],
+  },
+  {
+    bgImage: "/images/pexels-fauxels-3184418.jpg",
+    humanImage: "/images/slider-human-3.jpg",
+    subtitle: "Collaborate Seamlessly",
+    title: "Empowering Tech Teams\nAcross the Globe",
+    description: "Unifying your IT landscape with modern solutions",
+    buttons: ["Explore Now", "Get Support"],
+  },
 ];
 
 const HeroCarousel = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <div className="relative z-[10]">
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation
         loop
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 5000 }}
         slidesPerView={1}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="w-full h-[600px]"
       >
-        {images.map((img, idx) => (
+        {slides.map((slide, idx) => (
           <SwiperSlide key={idx}>
             <div
               className="w-full h-full bg-cover bg-center flex items-center justify-center text-white"
-              style={{ backgroundImage: `url(${img})` }}
+              style={{ backgroundImage: `url(${slide.bgImage})` }}
             >
-              <div className="bg-black bg-opacity-40 p-6 rounded text-center">
-                <h2 className="text-4xl font-bold mb-4">Empowering Innovation</h2>
-                <button className="bg-blue-600 px-6 py-2 rounded-full hover:bg-blue-700 transition">
-                  Learn More
-                </button>
+              <div className="bg-black bg-opacity-50 w-full h-full flex items-center justify-center px-10">
+                {activeIndex === idx && (
+                  <motion.div
+                    className="text-center max-w-4xl"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {},
+                      visible: {},
+                    }}
+                  >
+                    <motion.p
+                      className="text-lg md:text-xl uppercase tracking-widest mb-8 underline decoration-pink-500"
+                      variants={{
+                        hidden: { opacity: 0, y: -30 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1.2, delay: 0.3 },
+                        },
+                      }}
+                    >
+                      {slide.subtitle}
+                    </motion.p>
+
+                    <motion.h1
+                      className="text-4xl md:text-6xl font-bold leading-tight mb-6 whitespace-pre-line"
+                      variants={{
+                        hidden: { opacity: 0, y: 40 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1.2, delay: 1.0 },
+                        },
+                      }}
+                    >
+                      {slide.title}
+                    </motion.h1>
+
+                    <motion.p
+                      className="text-lg md:text-xl mb-8"
+                      variants={{
+                        hidden: { opacity: 0, y: 40 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1.2, delay: 1.8 },
+                        },
+                      }}
+                    >
+                      {slide.description}
+                    </motion.p>
+
+                    <motion.div
+                      className="flex justify-center gap-4"
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1.2, delay: 2.6 },
+                        },
+                      }}
+                    >
+                      {slide.buttons.map((btn, i) => (
+                        <button
+                          key={i}
+                          className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition"
+                        >
+                          {btn}
+                        </button>
+                      ))}
+                    </motion.div>
+                  </motion.div>
+                )}
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Bottom Wavy Line */}
+      {/* Bottom Wave */}
       <div className="absolute bottom-0 w-full overflow-hidden leading-[0] z-10">
         <svg
           className="relative block w-full h-[100px]"

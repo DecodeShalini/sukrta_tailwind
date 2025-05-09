@@ -29,23 +29,9 @@ const NavHeader = () => {
             </Link>
           </li>
           <li className="relative group">
-  <button className="hover:text-blue-600 flex items-center gap-1">
-    <b>Services</b>
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-    </svg>
-  </button>
-  <ul className="absolute left-0 top-full mt-2 bg-white shadow-lg border rounded w-40 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-300 z-[110]">
-    <li className="px-4 py-2 hover:bg-gray-100">
-      <Link to="/services/web-development">Web Development</Link>
-    </li>
-    <li className="px-4 py-2 hover:bg-gray-100">
-      <Link to="/services/it-consulting">IT Consulting</Link>
-    </li>
-    <li className="px-4 py-2 hover:bg-gray-100">
-      <Link to="/services/cloud-solutions">Cloud Solutions</Link>
-    </li>
-  </ul>
+          <Link to="/services" className="hover:text-blue-600">
+              <b>Services</b>
+            </Link>
 </li>
           <li>
             <Link to="/contact" className="hover:text-blue-600">

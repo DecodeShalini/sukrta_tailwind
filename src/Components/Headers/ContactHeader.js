@@ -13,10 +13,10 @@ return(
           <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-end">
           <span className="flex items-center gap-1">
             <PhoneIcon className="w-4 h-4" />
-            Phone <b>500.369.2580</b>
+            Phone <b>044 4853 5969</b>
           </span>
           <span className="flex items-center gap-1">
-            <Mail className="w-4 h-4" />info@zentec.com</span>
+            <Mail className="w-4 h-4" />info@sukrtatech.com</span>
 
             <div className="relative">
               <select className="bg-gray-800 text-white border border-gray-700 rounded px-2 py-1 focus:outline-none">
