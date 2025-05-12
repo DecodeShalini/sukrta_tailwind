@@ -1,0 +1,13 @@
+/* ZenTec.css */
+.container {
+    background: linear-gradient(to right, #4a3d8f, #f06eaa);
+  }
+  
+  .card {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  

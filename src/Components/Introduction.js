@@ -1,21 +1,12 @@
-import { motion } from "framer-motion";
-export default function Introduction() {
-  //     <style>
-  //   {`
-  //     @keyframes move {
-  //       0% { transform: translateX(-100%); }
-  //       100% { transform: translateX(100%); }
-  //     }
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
-  //     .animated-line {
-  //       animation: move 2s linear infinite;
-  //     }
-  //   `}
-  // </style>
-  //     // CSS for the animated line
+export default function Introduction() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <div>
+    <div ref={sectionRef}>
       <section className="relative bg-white">
         {/* Top Wave */}
         <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none">
@@ -52,33 +43,17 @@ export default function Introduction() {
           {/* Right: Animated Image Collage */}
           <div className="md:w-1/2 grid grid-cols-2 grid-rows-2 gap-4">
             {[
-              {
-                src: "/images/pexels-cottonbro-5474299.jpg",
-                alt: "About 1",
-                from: -100,
-              },
-              {
-                src: "/images/pexels-fauxels-3184418.jpg",
-                alt: "About 2",
-                from: 100,
-              },
-              {
-                src: "/images/pexels-fauxels-3184405.jpg",
-                alt: "About 3",
-                from: -100,
-              },
-              {
-                src: "/images/pexels-mikhail-nilov-7988079.jpg",
-                alt: "About 4",
-                from: 100,
-              },
+              { src: "/images/pexels-cottonbro-5474299.jpg", alt: "About 1", from: -100 },
+              { src: "/images/pexels-fauxels-3184418.jpg", alt: "About 2", from: 100 },
+              { src: "/images/pexels-fauxels-3184405.jpg", alt: "About 3", from: -100 },
+              { src: "/images/pexels-mikhail-nilov-7988079.jpg", alt: "About 4", from: 100 },
             ].map((img, index) => (
               <motion.img
                 key={index}
                 src={img.src}
                 alt={img.alt}
                 initial={{ x: img.from, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                animate={isInView ? { x: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="w-full h-40 object-cover rounded shadow"
               />
@@ -86,30 +61,36 @@ export default function Introduction() {
           </div>
         </div>
       </section>
+
+      {/* Animated Line */}
       <div className="w-full flex justify-center my-6">
         <div className="relative w-40 h-1 bg-gradient-to-r from-blue-500 to-purple-500 overflow-hidden rounded-full">
-          <div className="absolute top-0 left-0 w-full h-full animated-line"></div>
+          <div
+            className={`absolute top-0 left-0 w-full h-full ${
+              isInView ? "animated-line" : ""
+            }`}
+          ></div>
         </div>
 
         <style>
           {`
-      @keyframes move {
-        0% {
-          transform: translateX(-100%);
-        }
-        100% {
-          transform: translateX(100%);
-        }
-      }
+            @keyframes move {
+              0% {
+                transform: translateX(-100%);
+              }
+              100% {
+                transform: translateX(100%);
+              }
+            }
 
-      .animated-line {
-        background: linear-gradient(to right, #9333ea, #3b82f6, #9333ea);
-        width: 200%;
-        height: 100%;
-        opacity: 0.3;
-        animation: move 2s linear infinite;
-      }
-    `}
+            .animated-line {
+              background: linear-gradient(to right, #9333ea, #3b82f6, #9333ea);
+              width: 200%;
+              height: 100%;
+              opacity: 0.3;
+              animation: move 2s linear infinite;
+            }
+          `}
         </style>
       </div>
     </div>
