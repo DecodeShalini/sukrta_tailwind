@@ -20,14 +20,19 @@ export default function Cards() {
               desc: "Secure and scalable cloud infrastructures to grow with you.",
             },
             {
-              img: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200", // Make sure to add the image path for AI Integration
+              img: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200", // Image for AI Integration
               title: "AI Integration",
               desc: "Leverage artificial intelligence to enhance business processes and customer experiences.",
             },
             {
-              img: "https://images.pexels.com/photos/5614119/pexels-photo-5614119.jpeg?auto=compress&cs=tinysrgb&w=1200", // Make sure to add the image path for Payment Integration
+              img: "https://images.pexels.com/photos/5614119/pexels-photo-5614119.jpeg?auto=compress&cs=tinysrgb&w=1200", // Image for Payment Integration
               title: "Payment Integration",
               desc: "Seamless integration of secure and reliable payment systems for your business.",
+            },
+            {
+              img: "https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200", // Image for E-commerce Solutions
+              title: "E-commerce Solutions",
+              desc: "End-to-end e-commerce solutions to help you sell online with ease, from store setup to payment integration.",
             },
           ].map((service, index) => (
             <div

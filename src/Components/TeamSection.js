@@ -57,6 +57,12 @@ const TeamSection = () => {
       image:
         "https://images.pexels.com/photos/31986953/pexels-photo-31986953/free-photo-of-young-professional-with-creative-background.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
+    {
+      name: "Robert",
+      title: "Front End Developer",
+      image:
+        "https://images.pexels.com/photos/4064839/pexels-photo-4064839.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    },
     // {
     //   name: "Shalini Paulraj",
     //   title: "React Developer",
