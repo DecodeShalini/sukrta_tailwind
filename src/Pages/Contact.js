@@ -29,7 +29,7 @@ const Contact = () => {
               <MdEmail className="text-blue-600 text-2xl mt-1" />
               <div>
                 <p className="font-semibold">Email</p>
-                <p>contact@yourcompany.com</p>
+                <p>info@sukrtatech.com</p>
               </div>
             </div>
 
@@ -37,7 +37,7 @@ const Contact = () => {
               <MdPhone className="text-blue-600 text-2xl mt-1" />
               <div>
                 <p className="font-semibold">Phone</p>
-                <p>+123 456 7890</p>
+                <p>044 4853 5969</p>
               </div>
             </div>
 
@@ -46,9 +46,9 @@ const Contact = () => {
               <div>
                 <p className="font-semibold">Address</p>
                 <p>
-                  123 Main Street, Suite 500
+                  Dwaraka, G1 - Sreyas, 1st St, Adyar,
                   <br />
-                  Your City, Country
+                  Chennai, Tamil Nadu 600020
                 </p>
               </div>
             </div>
